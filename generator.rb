@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # Gererate G-Code to dry filament on a 3D-Printer's heat bed
 #
 # https://www.printables.com/@combobulator 
@@ -19,10 +20,18 @@
 # parameterize it....
 printer_model = "MK3.9" # be careful on changing this - check if gcode commands are compatible ("MK4" should be OK) 
 material = "PLA" # used just for displaying texts
+# temperature of print bed in °C. depending on your temp losses in your box/chamber,
+# you could add some degrees (e.g. add 20°C)...
+bed_temp = 55 
+drying_time = 300 #[minutes]     
+
 # Find some Drying parameters here:  https://3dprinterly.com/how-to-dry-filament-like-a-pro-pla-abs-petg-nylon-tpu/
-# temperature of print bed in °C. depending on your temp losses in your chamber you could add some degrees (e.g. add 5°C)...
-bed_temp = 61 
-drying_time = 360 #[minutes]     
+# PLA           40-45°C 4-5 Hours
+# ABS           65-70°C 2-6 Hours
+# PETG          65-70°C 4-6 Hours
+# Nylon         75-90°C 4-6 Hours
+# TPU           45-60°C 4-5 Hours
+# Polycarbonate 80-90°C 8-10 Hours
 ################################################################################################
 
 gcode = <<~GCODE_BLOCK
